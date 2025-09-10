@@ -69,27 +69,3 @@ class ItauApp:
 
         print("Login finalizado.")
 
-'''
-No Codigo Main: 
-
-from itau_app_automation import ItauAppAutomation
-
-if __name__ == "__main__":
-    app = ItauAppAutomation()
-
-    senha = "1234"
-    imagens_botoes = {
-        "1": "imgs/1.png",
-        "2": "imgs/2.png",
-        "3": "imgs/3.png",
-        "4": "imgs/4.png",
-        "5": "imgs/5.png",
-        "6": "imgs/6.png",
-        "7": "imgs/7.png",
-        "8": "imgs/8.png",
-        "9": "imgs/9.png",
-        "0": "imgs/0.png"
-    }
-
-    app.login_app(senha, imagens_botoes)
-    '''
