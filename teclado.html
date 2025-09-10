@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Teclado Virtual Fake</title>
+  <style>
+    button { 
+      width: 100px; 
+      height: 60px; 
+      margin: 10px; 
+      font-size: 18px; 
+    }
+    #senha-digitada {
+      margin-top: 20px;
+      font-size: 22px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h3>Teclado Virtual (teste)</h3>
+  <div id="teclado"></div>
+  <br><br>
+  <button onclick="confirmar()">Confirmar</button>
+
+  <p id="senha-digitada">Senha digitada: </p>
+
+  <script>
+    const tecladoDiv = document.getElementById("teclado");
+    const senhaCorreta = "7243"; // <- senha que você quer testar
+    let senhaDigitada = "";
+
+    // Gera os pares de números embaralhados
+    function gerarTeclado() {
+      tecladoDiv.innerHTML = "";
+      senhaDigitada = "";
+      document.getElementById("senha-digitada").innerText = "Senha digitada: ";
+
+      // embaralha os números de 0 a 9
+      let numeros = [...Array(10).keys()]; // [0,1,2,...,9]
+      numeros.sort(() => Math.random() - 0.5);
+
+      // cria pares (0 ou 2, etc)
+      for (let i = 0; i < 10; i += 2) {
+        let n1 = numeros[i];
+        let n2 = numeros[i+1];
+        let btn = document.createElement("button");
+        btn.innerText = `${n1} ou ${n2}`;
+        btn.onclick = () => digitar(n1, n2);
+        tecladoDiv.appendChild(btn);
+      }
+    }
+
+    function digitar(n1, n2) {
+      // simula que o usuário escolheu o primeiro número do par
+      senhaDigitada += n1;  
+      document.getElementById("senha-digitada").innerText = "Senha digitada: " + senhaDigitada;
+    }
+
+    function confirmar() {
+      if (senhaDigitada === senhaCorreta) {
+        alert("✅ Login com sucesso!");
+      } else {
+        alert("❌ Senha incorreta!");
+      }
+      gerarTeclado(); // reinicia teclado
+    }
+
+    gerarTeclado();
+  </script>
+</body>
+</html>
