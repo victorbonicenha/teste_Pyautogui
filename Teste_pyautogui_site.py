@@ -1,18 +1,17 @@
 from Teste_Pyautogui import ItauApp
 import webbrowser
-import time
-import os
+import time, os
 
 if __name__ == "__main__":
     app = ItauApp()
     senha = "7243"
 
-    # 1. Abre o protótipo no navegador
+    # Abre o protótipo no navegador
     webbrowser.open("file:///" + os.path.abspath("teclado.html"))
-    time.sleep(2)  # espera carregar
+    time.sleep(2)
 
-    # 2. Mapeia os botões no HTML
+    # Mapeia os botões
     botoes = app.mapear_botoes()
 
-    # 3. Digita a senha 7243
+    # Digita a senha e confirma
     app.login_app(senha, botoes)
